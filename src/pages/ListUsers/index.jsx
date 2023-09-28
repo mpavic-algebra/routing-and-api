@@ -17,7 +17,10 @@ const ListUsers = () => {
         e.preventDefault()
         const res = await axios.delete(`https://kv63mr-3000.csb.app/users/${id}`)
         console.log(res.status === 204)
-        if (res.status === 204) window.location.reload(false);
+        // if (res.status === 204) window.location.reload(false);
+        if (res.status === 204) {
+            setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
+          }
     }
 
     return (
